@@ -8,16 +8,15 @@ vector<string> split_string(string);
 int minimumSwaps(vector<int> arr) {
     int swap = 0;
     for (int i = 0; i < arr.size(); ++i) {
-        if (i + 1 != arr[i]) {
-            int t = i;
-            while (i + 1 != arr[t]) {
-                t++;
-            }
-            int tmp = arr[t];
-            arr[t] = arr[i];
-            arr[i] = tmp;
-            swap++;
-        }
+        const int index = i + 1;
+        if (index == arr[i]) continue;
+        
+        int t = i;
+        while (index != arr[t]) t++;
+        int tmp = arr[t];
+        arr[t] = arr[i];
+        arr[i] = tmp;
+        swap++;
     }
     return swap;
 }
